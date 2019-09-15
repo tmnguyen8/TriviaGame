@@ -1,0 +1,17 @@
+.main-content {
+    background-image: url("/assets/images/container-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+   
+    text-align: center;
+    font: white;
+    padding-top: 10px;
+}
+
+.header {
+    font: white;
+    margin-bottom: 70px;
+}
+.choices{
+    border: 1px soid rgb(224, 220, 220);
+}
