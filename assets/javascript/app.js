@@ -148,7 +148,7 @@ $(document).on("click", ".choices", function() {
     clearInterval(timer);
     nextQuestion()
 });
-
+//On click to start the game
 $(document).on("click", "#newGame", function() {
     // the Start Game will be hidden once clicked
     $("#newGame").hide()
@@ -159,7 +159,7 @@ $(document).on("click", "#newGame", function() {
     timer = null;    
     displayQuestion();
 });
-
+// On click to reset the game
 $(document).on("click", "#reset", function() {    
     counter = 5;
     currentQuestion = 0;
