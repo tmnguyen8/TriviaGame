@@ -80,7 +80,9 @@ function countDown () {
     if  (counter===0) {
         clearInterval(timer);
         lost++;
-        nextQuestion();
+        clearInterval(timer);
+        displayWrongAnswer(correctAnswer);
+        
     }
 }
 //function to display questions
@@ -122,10 +124,28 @@ function displayWrongAnswer (correctAnswer){
     var randomNoGif = funnyNoGif[Math.floor(Math.random()*funnyNoGif.length)];
     console.log(randomNoGif);
     var result = `
-        <p>The correct answer is ${correctAnswer}.</p>
-        <img src="${randomNoGif}">`
+        <p>Sorry! The correct answer is ${correctAnswer}.</p>
+        <img class="img-fluid funny-gift" src="${randomNoGif}"> <br>
+        <button class="btn btn-primary" onclick="nextQuestion()">Continue</button>
+        
+        `
 
     $("#triviaGame").html(result); //End of displayWrongAnswer HTML 
+}
+
+// Display funny gif when the answer is wrong
+function displayRightAnswer (correctAnswer){
+    var randomYesGif = funnyYesGif[Math.floor(Math.random()*funnyYesGif.length)];
+    console.log(randomYesGif);
+    var result = `
+        <p>Correct! The correct answer is ${correctAnswer}.</p>
+        <img class="img-fluid funny-gif" src="${randomYesGif}"> <br>
+        <button class="btn btn-primary" onclick="nextQuestion()">Continue</button>
+        
+        `
+
+    $("#triviaGame").html(result); //End of displayWrongAnswer HTML 
+    
 }
 
 // EXECUTION
@@ -139,33 +159,37 @@ $(document).on("click", ".choices", function() {
     if(correctAnswer === userChoice) {
         console.log("Correct Answer!")
         score++;
+        clearInterval(timer);
+        displayRightAnswer(correctAnswer);
     } else {
         console.log("Wrong Answer!")
         lost++;
-        displayWrongAnswer(correctAnswer)
+        clearInterval(timer);
+        displayWrongAnswer(correctAnswer);
     }
-    displayResult();
-    clearInterval(timer);
-    nextQuestion()
+    
+    
 });
 //On click to start the game
 $(document).on("click", "#newGame", function() {
     // the Start Game will be hidden once clicked
     $("#newGame").hide()
-    counter = 5;
+    counter = 45;
     currentQuestion = 0;
     score = 0;
     lost = 0;
     timer = null;    
     displayQuestion();
 });
+
 // On click to reset the game
 $(document).on("click", "#reset", function() {    
-    counter = 5;
+    counter = 45;
     currentQuestion = 0;
     score = 0;
     lost = 0;
     timer = null;
+    $("#score").empty();
     displayQuestion();
-    displayResult();
+
 });
