@@ -28,10 +28,26 @@ var availableQuestions = [
     },
 
     {
-        question: "If Tres is facing north ans turns 90 degrees to his right, what direction is he now facing?",
+        question: "If Tres is facing north and turns 90 degrees to his right, what direction is he now facing?",
         choices: ["South", "East", "West"],
         correctAnswer: "East"
     }
+];
+
+var funnyNoGif = [
+    "assets/images/No1.gif",
+    "assets/images/No2.gif",
+    "assets/images/No3.gif",
+    "assets/images/No4.gif",
+    "assets/images/No5.gif",
+];
+
+var funnyYesGif = [
+    "assets/images/Yes1.gif",
+    "assets/images/Yes2.gif",
+    "assets/images/Yes3.gif",
+    "assets/images/Yes4.gif",
+    "assets/images/Yes5.gif",
 ];
 // Defining functional variables
 var counter = 45;
@@ -101,6 +117,16 @@ function displayResult () {
     $("#score").html(result);
     $("#triviaGame").html(`<button class="btn btn-primary btn-choices" id="reset">Reset Game</button>`)
 }
+// Display funny gif when the answer is wrong
+function displayWrongAnswer (correctAnswer){
+    var randomNoGif = funnyNoGif[Math.floor(Math.random()*funnyNoGif.length)];
+    console.log(randomNoGif);
+    var result = `
+        <p>The correct answer is ${correctAnswer}.</p>
+        <img src="${randomNoGif}">`
+
+    $("#triviaGame").html(result); //End of displayWrongAnswer HTML 
+}
 
 // EXECUTION
 // *****************************************
@@ -111,11 +137,12 @@ $(document).on("click", ".choices", function() {
     console.log(`${userChoice} is clicked`)
 
     if(correctAnswer === userChoice) {
-        console.log("You Win!")
+        console.log("Correct Answer!")
         score++;
     } else {
-        console.log("You Lose!")
+        console.log("Wrong Answer!")
         lost++;
+        displayWrongAnswer(correctAnswer)
     }
     displayResult();
     clearInterval(timer);
@@ -140,4 +167,5 @@ $(document).on("click", "#reset", function() {
     lost = 0;
     timer = null;
     displayQuestion();
+    displayResult();
 });
