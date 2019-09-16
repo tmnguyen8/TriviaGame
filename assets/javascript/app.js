@@ -1,23 +1,47 @@
 // PSEUDO CODE
 // GLOBAL VARIABLES
 // *****************************************
-// Defining global class with question, availableAnswer, correctAnswer
-// Defining list of questions
-// Defining Number of question
-// Defining Number of correct
-// Defining the time
-// Defining decremental
-var counter = 5;
+// QUESTIONS
+var availableQuestions = [
+    {
+        question: "How many cups are in 28 fluid ounces?",
+        choices: ["3.5", "14", "7"],
+        correctAnswer: "7"
+    },
+
+    {
+        question: "Budapest is the capital of what European country?",
+        choices: ["Austria", "Hungary", "Portugal"],
+        correctAnswer: "Hungary"
+    },
+
+    {
+        question: "Between 1455 and 1485, the war of the roses took place in what country?",
+        choices: ["France", "England", "Germany"],
+        correctAnswer: "England"
+    },
+
+    {
+        question: "A common type of radio wave is referred to as VHF. What do the letters VHF stand for?",
+        choices: ["Very High Frequency", "Video Homing Frequency", "Variable High Frequency"],
+        correctAnswer: "Very High Frequency"
+    },
+
+    {
+        question: "If Tres is facing north ans turns 90 degrees to his right, what direction is he now facing?",
+        choices: ["South", "East", "West"],
+        correctAnswer: "East"
+    }
+];
+// Defining functional variables
+var counter = 45;
 var currentQuestion = 0;
 var score = 0;
 var lost = 0;
 var timer = 0;
+
 // FUNCTIONS 
 // *****************************************
-function startGame() {
-
-}
-
 
 //function to start the next function; stops the game when the current question reaches the end
 function nextQuestion (){
@@ -45,7 +69,7 @@ function countDown () {
 }
 //function to display questions
 function displayQuestion () {
-    counter = 5;
+    counter = 45;
     timer = setInterval(countDown, 1000);
 
     //calling the questions, choices and answer from availableQuestion
@@ -55,7 +79,7 @@ function displayQuestion () {
     $("#time").html(`<h4>${timer}</h4>`)
     $("#triviaGame").html(`
         <h4>${question}</h4>
-        <h5>${displayChoices(choices)}</h5>
+        <h4>${displayChoices(choices)}</h4>
     `)
 
 }
@@ -63,7 +87,7 @@ function displayQuestion () {
 function displayChoices(choices) {
     var result = "";
     for (i of choices) {
-        result += `<p class="button choices" data-choice="${i}">${i}</p>`
+        result += `<button class="btn btn-primary btn-choices choices" data-choice="${i}">${i}</button>`
     }
     return result;
 }
@@ -75,7 +99,7 @@ function displayResult () {
     `   //end of result
 
     $("#score").html(result);
-    $("#triviaGame").html(`<button class="btn btn-primary" id="reset">Reset Game</button>`)
+    $("#triviaGame").html(`<button class="btn btn-primary btn-choices" id="reset">Reset Game</button>`)
 }
 
 // EXECUTION
@@ -93,12 +117,14 @@ $(document).on("click", ".choices", function() {
         console.log("You Lose!")
         lost++;
     }
-    // displayResult();
+    displayResult();
     clearInterval(timer);
     nextQuestion()
 });
 
 $(document).on("click", "#newGame", function() {
+    // the Start Game will be hidden once clicked
+    $("#newGame").hide()
     counter = 5;
     currentQuestion = 0;
     score = 0;

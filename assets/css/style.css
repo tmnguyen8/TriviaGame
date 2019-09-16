@@ -1,17 +1,32 @@
-.main-content {
+.main-content{
     background-image: url("/assets/images/container-bg.jpg");
+    /* background-attachment: fixed; */
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-   
+    background-size: 80%;
+    max-height: 600rem;
+    margin-top: 20px;
     text-align: center;
-    font: white;
-    padding-top: 10px;
+    color: white;
+    padding: 30px;
+    
+}
+.header {
+    margin: 20px;
+    font-size: 3vw;
+}
+.scoreBoard {
+    margin: 20px;
+    padding: 20px;
+    font-size: 3vw;
 }
 
-.header {
-    font: white;
-    margin-bottom: 70px;
-}
 .choices{
     border: 1px soid rgb(224, 220, 220);
+    margin: 20px;
+}
+
+.triviaGame {
+    margin: 50px;
+    padding: 20px;
 }

@@ -10,21 +10,19 @@
     <title>Trivia Game</title>
 </head>
 <body>
-    <div class="container main-content">
-        <div class="jumbotron ">
-            <h1>Are you smarter than a 5th grader</h1>
-            <button class="btn btn-primary" id="newGame">Start Game</button>
-
+    <div class="container-fluid main-content">
+        
+        <h1 class="header">Are you smarter than a 5th grader</h1>
+        <button class="btn btn-primary" id="newGame">Start Game</button>
+        <div class="scoreBoard">
             <h2 id="time"></h2>
             <h5 id="score"></h5>
-            <div id="triviaGame"></div>
-
-            
         </div>
+        <div id="triviaGame" class="triviaGame"></div>            
+        
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./assets/javascript/q-a.js"></script>
     <script src="./assets/javascript/app.js"></script>
 </body>
 </html>
