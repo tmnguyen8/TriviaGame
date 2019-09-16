@@ -72,7 +72,7 @@ function nextQuestion (){
 }
 
 //timer is counting down; clear the timer when  it reaches 0 and load next question
-function countDown () {
+function countDown (correctAnswer) {
     counter--;
 
     $("#time").html(`Timer: ${counter}`);
@@ -88,11 +88,12 @@ function countDown () {
 //function to display questions
 function displayQuestion () {
     counter = 45;
-    timer = setInterval(countDown, 1000);
+    timer = setInterval(function() {countDown(correctAnswer)} , 1000);
 
     //calling the questions, choices and answer from availableQuestion
     var question = availableQuestions[currentQuestion].question;
     var choices = availableQuestions[currentQuestion].choices;
+    var correctAnswer = availableQuestions[currentQuestion].correctAnswer;
 
     $("#time").html(`<h4>${timer}</h4>`)
     $("#triviaGame").html(`
