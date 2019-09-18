@@ -1,5 +1,5 @@
 .main-content{
-    background-image: url("/assets/images/background.png");
+    background-image: url("./assets/images/background.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -13,7 +13,7 @@
 
 .myNav {
     
-    background-image: url("/assets/images/banner.jpg");
+    background-image: url("./assets/images/banner.jpg");
 }
 .header {
     background-color: rgba(11,46,22, 0.7);
